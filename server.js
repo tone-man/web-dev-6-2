@@ -171,38 +171,6 @@ function sendInternalServerError(res) {
   trace(`Internal server error response written.`);
 }
 
-// Close the db connection
-function closeDB() {
-  db.close((err) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    console.log("Closed the database connection.");
-  });
-}
-
-/**
- * Function to add a provided username to the user table
- * @param {string} username
- *
- * TODO: Move this function to another file called "userController.js" or the like.
- * TODO: Make this a promise so we can check if it succeeds/fails and respond accordingly.
- */
-function addUser(username) {
-  // insert one row into the langs table
-  db.run(
-    `INSERT OR IGNORE INTO user (username) VALUES(?)`,
-    [username],
-    function (err) {
-      if (err) {
-        return console.log(err.message);
-      }
-      // get the last insert id
-      console.log(`A row has been inserted with rowid: ${this.lastID}`);
-    }
-  );
-}
-
 /**
  * This helper function prints a message to the screen on if {@code doTracing} is true.
  *
