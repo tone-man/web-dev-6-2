@@ -1,0 +1,1 @@
+This is an example of serving pages in html. Had some fun trying to add three.js to this example.
